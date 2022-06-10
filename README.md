@@ -5,6 +5,7 @@ concrete-greeter is a configurable terminal greeter written in Rust. Simply clon
 
 ## Prerequisites
 - A Linux machine
+- Some shell with an rc file (such as zsh or bash)
 
 ## How to install
 Run `install.sh` and add `concrete-greeter` to the top of your shell's rc file (~/.zshrc, ~/.bashrc, etc).
