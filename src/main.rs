@@ -46,7 +46,7 @@ fn main() {
         print!("{}\t", colors::BOLD_CYAN);
 
         if config::MEM_USAGE { print!("Memory: {}mb/{i}mb   -   ", sys.used_memory() / 1000, i = sys.total_memory() / 1000); }
-        if config::STROAGE_AVAILABLE { print!("Disk: {}gb/{i}gb", sys.disks()[0].available_space() / 1000000000, i = sys.disks()[0].total_space() / 1000000000); }
+        if config::STROAGE_AVAILABLE { print!("Disk: {}gb/{i}gb", (sys.disks()[0].total_space() - sys.disks()[0].available_space()) / 1000000000, i = sys.disks()[0].total_space() / 1000000000); }
     }
 
     // battery info
