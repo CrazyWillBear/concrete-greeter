@@ -58,8 +58,8 @@ fn main() {
 
         let str_output = String::from_utf8(output.stdout).unwrap().replace("\n", "");
         let int_output = str_output.parse::<i32>().unwrap();
-        let full_bars = int_output / 10i32;
-        let empty_bars = int_output / 10i32 - 10i32;
+        let full_bars = int_output / 10;
+        let empty_bars = 10 - int_output / 10;
 
 
         let mut color = colors::GREEN;
@@ -67,7 +67,7 @@ fn main() {
         if int_output <= config::MED_BATTERY_THRESHOLD { color = colors::YELLOW; }
         if int_output <= config::LOW_BATTERY_THRESHOLD { color = colors::RED; }
 
-        print!("   -   {}[{i}{j}] {k}%{l}", color, i = (0..full_bars).fold(String::new(), |b, _| b + "#"), j = (0..empty_bars + 2).fold(String::new(), |b, _| b + "-"), k = str_output, l = colors::RESET);
+        print!("   -   {}[{i}{j}] {k}%{l}", color, i = (0..full_bars).fold(String::new(), |b, _| b + "#"), j = (0..empty_bars).fold(String::new(), |b, _| b + "-"), k = str_output, l = colors::RESET);
     }
     
     println!();
